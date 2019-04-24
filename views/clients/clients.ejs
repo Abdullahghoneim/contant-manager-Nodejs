@@ -2,6 +2,54 @@
 
 <body>
   <main>
-    <h1>Clients</h1>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col">
+          <% if(clients.length > 0){ %>
+          <h2>Clients</h2>
+          <% } %>
+        </div>
+        <div class="col">
+          <div class="float-right">
+            <a class="btn btn-info btn-sm" href="/add-client">Add client</a>
+          </div>
+        </div>
+      </div>
+      <% if(clients.length > 0){ %>
+      <!-- clients taple -->
+      <div class="mt-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Balance</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% clients.forEach((client,index) => { %>
+            <tr>
+              <td scope="row"><%= index+1 %></td>
+              <th><%= client.name %></th>
+              <td><%= client.email %></td>
+              <td><%= client.phone %></td>
+              <td><%= client.balance %></td>
+              <td>
+                <a href="/<%= client._id %> " class="btn btn-light">Details</a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <% }else { %>
+      <div class="text-center mt-5">
+        <h1>You Dont Have Client Yeat</h1>
+      </div>
+      <% } %>
+    </div>
   </main>
 </body>
